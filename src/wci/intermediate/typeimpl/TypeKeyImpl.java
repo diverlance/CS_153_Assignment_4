@@ -22,5 +22,8 @@ public enum TypeKeyImpl implements TypeKey
     ARRAY_INDEX_TYPE, ARRAY_ELEMENT_TYPE, ARRAY_ELEMENT_COUNT,
 
     // Record
-    RECORD_SYMTAB
+    RECORD_SYMTAB,
+    
+    // Set
+    SET_SUBRANGE, SET_ENUMERATION
 }
