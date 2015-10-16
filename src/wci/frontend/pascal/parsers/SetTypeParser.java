@@ -67,7 +67,7 @@ class SetTypeParser extends TypeSpecificationParser
             		SymTabEntry identifier = symTabStack.lookup(token.getText().toLowerCase());
             		if(identifier != null)
             		{
-            			setType.setAttribute(SET_IDENTIFIER, identifier.getTypeSpec());
+            			setType.setAttribute(SET_NAMED, identifier.getTypeSpec());
             			token = nextToken();  // consume IDENTIFIER
             			return setType;
             		}
@@ -77,10 +77,10 @@ class SetTypeParser extends TypeSpecificationParser
             			return null;
             		}
             	case INTEGER:
-            		setType.setAttribute(SET_SUBRANGE, new SubrangeTypeParser(this).parse(token));
+            		setType.setAttribute(SET_UNNAMED, new SubrangeTypeParser(this).parse(token));
                     return setType;
             	case LEFT_PAREN:
-            		setType.setAttribute(SET_ENUMERATION, new EnumerationTypeParser(this).parse(token));
+            		setType.setAttribute(SET_UNNAMED, new EnumerationTypeParser(this).parse(token));
             		return setType;
             	default:
             		token = synchronize(END_SET);
