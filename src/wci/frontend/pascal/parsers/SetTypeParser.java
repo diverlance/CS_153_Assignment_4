@@ -64,8 +64,10 @@ class SetTypeParser extends TypeSpecificationParser
             token = nextToken();  // consume OF
             switch((PascalTokenType) token.getType()) {
             	case IDENTIFIER:
-            		if(symTabStack.lookup(token.getText().toLowerCase()) != null)
+            		SymTabEntry identifier = symTabStack.lookup(token.getText().toLowerCase());
+            		if(identifier != null)
             		{
+            			setType.setAttribute(SET_IDENTIFIER, identifier.getTypeSpec());
             			token = nextToken();  // consume IDENTIFIER
             			return setType;
             		}
