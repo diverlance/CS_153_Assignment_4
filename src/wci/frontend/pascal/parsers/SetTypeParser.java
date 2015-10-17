@@ -68,6 +68,7 @@ class SetTypeParser extends TypeSpecificationParser
             		if(identifier != null)
             		{
             			setType.setAttribute(SET_NAMED, identifier.getTypeSpec());
+                                setType.setIdentifier(identifier);
             			token = nextToken();  // consume IDENTIFIER
             			return setType;
             		}
